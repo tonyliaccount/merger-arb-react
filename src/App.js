@@ -61,7 +61,7 @@ class InputField extends React.Component {
       if (marginCallPrice) {
 
         this.setState( prevState => ({
-          price_history: [...prevState.price_history, marginCallPrice]
+          price_history: [marginCallPrice, ...prevState.price_history]
         }));
 
       }
@@ -141,7 +141,7 @@ class InputField extends React.Component {
 
         <ListGroup className="mb-3">
           {
-            this.state.price_history.reverse().map( (item) => (
+            this.state.price_history.map( (item) => (
               <ListGroup.Item id={item.id} >
                 Margin Call Price: ${item.margin_call_price.toFixed(2)}
               </ListGroup.Item>
