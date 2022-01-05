@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Container } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 
 class CalculateShares extends React.Component {
     constructor(props) {
@@ -20,67 +20,74 @@ class CalculateShares extends React.Component {
   
     render() {
       return(
-        <Container fluid>
-          <Form onSubmit = {this.afterSubmission}>
+        <Container className="p-0">
+            <Card>
+                <Card.Header>Description</Card.Header>
+                <Card.Body>
+                    <Card.Title>Calculate Shares</Card.Title>
+                    <Card.Text>Given the spread to create, the prices of the stocks to use, and the buying power of the account, return the number of shares to go long.</Card.Text>
+                    <Form onSubmit = {this.afterSubmission}>
+                        
+                        <Form.Group className="mb-3">
+                        <Form.Label>Long Price:</Form.Label> 
+                        <Form.Control type="number" step="any" placeholder="Amount in dollars" 
+                            onChange={event => {
+                            this.setState({
+                                long_price: event.target.value
+                            });
+                            }
+                            } 
+                        />
+                        <Form.Text>Price of the stock to long.</Form.Text>
+                        </Form.Group>
             
-            <Form.Group className="mb-3">
-              <Form.Label>Long Price:</Form.Label> 
-              <Form.Control type="number" step="any" placeholder="Amount in dollars" 
-                onChange={event => {
-                  this.setState({
-                    long_price: event.target.value
-                  });
-                  }
-                } 
-              />
-              <Form.Text>Price of the stock to long.</Form.Text>
-            </Form.Group>
-  
-            <Form.Group className="mb-3">
-              <Form.Label>Short Price:</Form.Label> 
-              <Form.Control type="number" step="any" placeholder="Amount in dollars" 
-                onChange={event => {
-                  this.setState({
-                    short_price: event.target.value
-                  });
-                  }
-                } 
-              />
-              <Form.Text>Price of the stock to short.</Form.Text>
-            </Form.Group>
-  
-            <Form.Group className="mb-3">
-              <Form.Label>Buying Power:</Form.Label> 
-              <Form.Control type="number" step="any" placeholder="Amount in dollars" 
-                onChange={event => {
-                  this.setState({
-                    buying_power: event.target.value
-                  });
-                  }
-                } 
-              />
-              <Form.Text>Amount of money investor can leverage.</Form.Text>
-            </Form.Group>
-  
-            <Form.Group className="mb-3">
-              <Form.Label>Long-Short Rate:</Form.Label> 
-              <Form.Control type="number" step="any" placeholder="Decimal value between 0 and 1" 
-                onChange={event => {
-                  this.setState({
-                    long_short_rate: event.target.value
-                  });
-                  }
-                } 
-              />
-              <Form.Text>e.g. "0.5" implies a rate of 50%</Form.Text>
-            </Form.Group>
-  
-            <Form.Group className="mb-6">
-              <Button variant="primary" type="submit" >
-                Submit
-              </Button>
-            </Form.Group>
-          </Form>
+                        <Form.Group className="mb-3">
+                        <Form.Label>Short Price:</Form.Label> 
+                        <Form.Control type="number" step="any" placeholder="Amount in dollars" 
+                            onChange={event => {
+                            this.setState({
+                                short_price: event.target.value
+                            });
+                            }
+                            } 
+                        />
+                        <Form.Text>Price of the stock to short.</Form.Text>
+                        </Form.Group>
+            
+                        <Form.Group className="mb-3">
+                        <Form.Label>Buying Power:</Form.Label> 
+                        <Form.Control type="number" step="any" placeholder="Amount in dollars" 
+                            onChange={event => {
+                            this.setState({
+                                buying_power: event.target.value
+                            });
+                            }
+                            } 
+                        />
+                        <Form.Text>Amount of money investor can leverage.</Form.Text>
+                        </Form.Group>
+            
+                        <Form.Group className="mb-3">
+                        <Form.Label>Long-Short Rate:</Form.Label> 
+                        <Form.Control type="number" step="any" placeholder="Decimal value between 0 and 1" 
+                            onChange={event => {
+                            this.setState({
+                                long_short_rate: event.target.value
+                            });
+                            }
+                            } 
+                        />
+                        <Form.Text>e.g. "0.5" implies a rate of 50%</Form.Text>
+                        </Form.Group>
+            
+                        <Form.Group className="mb-6">
+                        <Button variant="primary" type="submit" >
+                            Submit
+                        </Button>
+                        </Form.Group>
+                    </Form>
+                </Card.Body>
+            </Card>
         </Container>
       )
     }

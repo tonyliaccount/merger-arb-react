@@ -6,19 +6,28 @@ import { Container, Nav, Navbar, TabContainer, Row, Col, TabContent, TabPane } f
 
 import CalculateShares from './components/CalculateShares';
 import MarginCallPrice from './components/MarginCallPrice';
+import AcquisitionArbitrage from './components/AcquisitionArbitrage';
+import MergerArbitrage from './components/MergerArbitrage';
 
 function App() {
   return (
     <div className="App">
       
         <Navbar bg="dark" variant="dark">
-          <Container>
+          <Container fluid>
             <Navbar.Brand>
+              <img
+                alt=""
+                src="finance.svg"
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+              />{'  '}
               Merger-Arb
             </Navbar.Brand>
           </Container>
         </Navbar>
-        <Container fluid>
+        <Container fluid v>
           <TabContainer defaultActiveKey="tab-1">
             <Row> 
               <Col sm={3}>
@@ -44,6 +53,12 @@ function App() {
                   </TabPane>
                   <TabPane eventKey="tab-2">
                     <CalculateShares/>
+                  </TabPane>
+                  <TabPane eventKey="tab-3">
+                    <AcquisitionArbitrage/>
+                  </TabPane>
+                  <TabPane eventKey="tab-4">
+                    <MergerArbitrage/>
                   </TabPane>
                 </TabContent>
               </Col>

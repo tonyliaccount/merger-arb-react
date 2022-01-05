@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Container, ListGroup } from 'react-bootstrap';
+import { Card, Container, ListGroup } from 'react-bootstrap';
 
 class MarginCallPrice extends React.Component {
 
@@ -69,75 +69,82 @@ class MarginCallPrice extends React.Component {
   
     render() {
       return(
-        <Container fluid>
-          <Form onSubmit = {this.afterSubmission}>
-            <Form.Group className="mb-3">
-              <Form.Label>Price:</Form.Label> 
-              <Form.Control type="number" step="any" placeholder="Amount in dollars" 
-                onChange={event => {
-                  this.setState({
-                    price: event.target.value
-                  });
-                  }
-                } 
-              />
-              <Form.Text>
-                Please enter a non-negative value.
-              </Form.Text>
-            </Form.Group>
+        <Container className="p-0">
+            <Card >
+                <Card.Header>Description</Card.Header>
+                <Card.Body>
+                    <Card.Title>Margin Call Price</Card.Title>
+                    <Card.Text>Calculates the margin call price of a security based on its initial price, it's initial margin requirement, and its maintenance margin requirement, as well as the type of trade.</Card.Text>
+                    <Form onSubmit = {this.afterSubmission}>
+                        <Form.Group className="mb-3">
+                        <Form.Label>Price:</Form.Label> 
+                        <Form.Control type="number" step="any" placeholder="Amount in dollars" 
+                            onChange={event => {
+                            this.setState({
+                                price: event.target.value
+                            });
+                            }
+                            } 
+                        />
+                        <Form.Text>
+                            Please enter a non-negative value.
+                        </Form.Text>
+                        </Form.Group>
+                        
+                        <Form.Group className="mb-3">
+                        <Form.Label>Initial Margin:</Form.Label> 
+                        <Form.Control type="number" step="any" placeholder="Decimal value between 0 and 1"
+                            onChange={event => {
+                            this.setState({
+                                initial_margin: event.target.value
+                            });
+                            }
+                            } 
+                        />
+                        <Form.Text>
+                            e.g. "0.5" implies a initial margin of 50%
+                        </Form.Text>
+                        </Form.Group>
             
-            <Form.Group className="mb-3">
-              <Form.Label>Initial Margin:</Form.Label> 
-              <Form.Control type="number" step="any" placeholder="Decimal value between 0 and 1"
-                onChange={event => {
-                  this.setState({
-                    initial_margin: event.target.value
-                  });
-                  }
-                } 
-              />
-              <Form.Text>
-                e.g. "0.5" implies a initial margin of 50%
-              </Form.Text>
-            </Form.Group>
-  
-            <Form.Group className="mb-3">
-              <Form.Label>Maintenance Margin:</Form.Label> 
-              <Form.Control type="number" step="any" placeholder="Decimal value between 0 and 1" 
-                onChange={event => {
-                  this.setState({
-                    maintenance_margin: event.target.value
-                  });
-                  }
-                } 
-              />
-              <Form.Text>
-                Note: Maintenance margin cannot be higher than initial margin.
-              </Form.Text>
-            </Form.Group>
+                        <Form.Group className="mb-3">
+                        <Form.Label>Maintenance Margin:</Form.Label> 
+                        <Form.Control type="number" step="any" placeholder="Decimal value between 0 and 1" 
+                            onChange={event => {
+                            this.setState({
+                                maintenance_margin: event.target.value
+                            });
+                            }
+                            } 
+                        />
+                        <Form.Text>
+                            Note: Maintenance margin cannot be higher than initial margin.
+                        </Form.Text>
+                        </Form.Group>
+                        
+                        <Form.Group className="mb-3">
+                        <Form.Label>Type:</Form.Label>
+                        <Form.Control as="select" 
+                            onChange={event => {
+                            this.setState({
+                                type: event.target.value
+                            });
+                            }
+                            } 
+                        >
+                            <option value="LONG">Long</option>
+                            <option value="SHORT">Short</option>
+                        </Form.Control>  
+                        </Form.Group>
             
-            <Form.Group className="mb-3">
-              <Form.Label>Type:</Form.Label>
-              <Form.Control as="select" 
-                onChange={event => {
-                  this.setState({
-                    type: event.target.value
-                  });
-                  }
-                } 
-              >
-                <option value="LONG">Long</option>
-                <option value="SHORT">Short</option>
-              </Form.Control>  
-            </Form.Group>
-  
-            <Form.Group className="mb-6">
-              <Button variant="primary" type="submit" >
-                Submit
-              </Button>
-            </Form.Group>
-          </Form>
-  
+                        <Form.Group className="mb-6">
+                        <Button variant="primary" type="submit" >
+                            Submit
+                        </Button>
+                        </Form.Group>
+                    </Form>
+                </Card.Body>
+            </Card>
+    
           <ListGroup className="mb-3">
             {
               this.state.price_history.map( (item) => (
