@@ -29,16 +29,16 @@ class CalculateShares extends React.Component {
                     <Form onSubmit = {this.afterSubmission}>
                         
                         <Form.Group className="mb-3">
-                        <Form.Label>Long Price:</Form.Label> 
-                        <Form.Control type="number" step="any" placeholder="Amount in dollars" 
-                            onChange={event => {
-                            this.setState({
-                                long_price: event.target.value
-                            });
-                            }
-                            } 
-                        />
-                        <Form.Text>Price of the stock to long.</Form.Text>
+                            <Form.Label>Long Price:</Form.Label> 
+                            <Form.Control type="number" step="any" placeholder="Amount in dollars" 
+                                onChange={event => {
+                                this.setState({
+                                    long_price: event.target.value
+                                });
+                                }
+                                } 
+                            />
+                            <Form.Text>Price of the stock to long.</Form.Text>
                         </Form.Group>
             
                         <Form.Group className="mb-3">

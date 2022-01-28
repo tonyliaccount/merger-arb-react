@@ -2,12 +2,13 @@ import './App.css';
 
 import React from 'react'
 
-import { Container, Nav, Navbar, TabContainer, Row, Col, TabContent, TabPane } from 'react-bootstrap';
+import { Container, Nav, Navbar, TabContainer, Row, Col, TabContent, TabPane, Toast} from 'react-bootstrap';
 
 import CalculateShares from './components/CalculateShares';
 import MarginCallPrice from './components/MarginCallPrice';
 import AcquisitionArbitrage from './components/AcquisitionArbitrage';
 import MergerArbitrage from './components/MergerArbitrage';
+import ResponseToast from './components/ResponseToast';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             </Navbar.Brand>
           </Container>
         </Navbar>
+        <ResponseToast></ResponseToast>
         <Container fluid v>
           <TabContainer defaultActiveKey="tab-1">
             <Row> 

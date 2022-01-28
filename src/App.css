@@ -1,3 +1,11 @@
 .App {
     margin-right: calc( (100vw - 100%) * -1); /* Make it so that when you have a scroll bar appearing by itself, the components don't move around */
+    z-index: 1;
+}
+
+.Toast-Properties {
+    position: fixed;
+    top: 1vh;
+    right: 1vw;
+    z-index: 2;
 }
